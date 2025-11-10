@@ -1,0 +1,38 @@
+[
+    {
+        "number": 4,
+        "title": "avi pull request",
+        "author": "aviyashar",
+        "merged_at": "2023-11-21T12:29:07Z",
+        "merge_commit_sha": "67922c374fda7007e0fd5c83a3d6fba20fe4f125",
+        "CR_Passed": false,
+        "Checks_Passed": false
+    },
+    {
+        "number": 3,
+        "title": "Feature/eva",
+        "author": "aviyashar",
+        "merged_at": "2023-11-21T12:27:11Z",
+        "merge_commit_sha": "f77d78620d580ad4787630c0daef3121ebad9ddb",
+        "CR_Passed": false,
+        "Checks_Passed": false
+    },
+    {
+        "number": 2,
+        "title": "Update README.md",
+        "author": "aviyashar",
+        "merged_at": "2023-11-21T12:25:14Z",
+        "merge_commit_sha": "157ef294248d773a3abeed5b8e6ff654c161358d",
+        "CR_Passed": false,
+        "Checks_Passed": false
+    },
+    {
+        "number": 1,
+        "title": "Chore/ops 197/last fixes before publishing",
+        "author": "aviyashar",
+        "merged_at": "2023-11-21T12:23:48Z",
+        "merge_commit_sha": "4b43403e952097d8d96e781b5b8239f5da9378c7",
+        "CR_Passed": false,
+        "Checks_Passed": false
+    }
+]
