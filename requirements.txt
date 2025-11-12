@@ -1,0 +1,10 @@
+# Runtime dependencies
+python-dotenv>=1.0.0
+requests>=2.31.0
+pandas>=2.1.0
+yaspin>=2.2.0
+
+# Development dependencies
+flake8>=6.1.0
+black>=24.3.0
+sphinx>=7.3.0
