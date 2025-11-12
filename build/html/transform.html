@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transformation Module &mdash; JuniorDataEngineerAssignment 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Extract Module" href="extract.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            JuniorDataEngineerAssignment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="extract.html">Extract Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transformation Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#transform.main"><code class="docutils literal notranslate"><span class="pre">main()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transform.processRawFiles"><code class="docutils literal notranslate"><span class="pre">processRawFiles()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transform.transformPRData"><code class="docutils literal notranslate"><span class="pre">transformPRData()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">JuniorDataEngineerAssignment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Transformation Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/transform.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-transform">
+<span id="transformation-module"></span><h1>Transformation Module<a class="headerlink" href="#module-transform" title="Link to this heading"></a></h1>
+<p>Module for transforming raw pull request data into a structured format.</p>
+<p>This module reads raw JSON files containing pull request data, processes
+them to compute additional fields, and saves the transformed data as CSV files.</p>
+<p>Functions:
+- transformPRData(df): Transforms a DataFrame of pull request data.
+- processRawFiles(rawDataDir, transformedDataDir): Processes all raw JSON files
+in the specified directory and saves transformed CSV files.
+- main(): Main function to execute the transformation process.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="transform.main">
+<span class="sig-prename descclassname"><span class="pre">transform.</span></span><span class="sig-name descname"><span class="pre">main</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/transform.html#main"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#transform.main" title="Link to this definition"></a></dt>
+<dd><p>Main function to execute the transformation process.</p>
+<p>Sets up directory paths and initiates processing of raw files.
+:returns: None</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="transform.processRawFiles">
+<span class="sig-prename descclassname"><span class="pre">transform.</span></span><span class="sig-name descname"><span class="pre">processRawFiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rawDataDir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transformedDataDir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transform.html#processRawFiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#transform.processRawFiles" title="Link to this definition"></a></dt>
+<dd><p>Processes all raw JSON files in the specified directory, transforms
+the pull request data, and saves the results as CSV files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>rawDataDir</strong> (<em>str</em>) – Directory containing raw JSON files.</p></li>
+<li><p><strong>transformedDataDir</strong> (<em>str</em>) – Directory to save transformed CSV files.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="transform.transformPRData">
+<span class="sig-prename descclassname"><span class="pre">transform.</span></span><span class="sig-name descname"><span class="pre">transformPRData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/transform.html#transformPRData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#transform.transformPRData" title="Link to this definition"></a></dt>
+<dd><p>Transforms the pull request DataFrame by converting date fields,
+computing quality gate status, and calculating time to merge.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>df</strong> (<em>pd.DataFrame</em>) – DataFrame containing raw pull request data:
+- CreatedAt (str): Creation timestamp of the PR.
+- MergedAt (str): Merge timestamp of the PR.
+- CR_Passed (bool): Code review passed status.
+- Checks_Passed (bool): Automated checks passed status.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Transformed DataFrame with additional computed fields:</dt><dd><ul class="simple">
+<li><p>CreatedAt (datetime): Parsed creation timestamp.</p></li>
+<li><p>MergedAt (datetime): Parsed merge timestamp.</p></li>
+<li><p>CR_Passed (bool): Code review passed status.</p></li>
+<li><p>Checks_Passed (bool): Automated checks passed status.</p></li>
+<li><p>AllQualityGatesPassed (bool): True if both CR_Passed and Checks_Passed are True.</p></li>
+<li><p>TimeToMerge (timedelta): Time difference between MergedAt and CreatedAt.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="extract.html" class="btn btn-neutral float-left" title="Extract Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Patterson Rainbird-Webb.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

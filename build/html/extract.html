@@ -1,0 +1,202 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extract Module &mdash; JuniorDataEngineerAssignment 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transformation Module" href="transform.html" />
+    <link rel="prev" title="JuniorDataEngineerAssignment documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            JuniorDataEngineerAssignment
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Extract Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#extract.getCheckStatus"><code class="docutils literal notranslate"><span class="pre">getCheckStatus()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract.getMergedPRs"><code class="docutils literal notranslate"><span class="pre">getMergedPRs()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extract.getReviews"><code class="docutils literal notranslate"><span class="pre">getReviews()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transform.html">Transformation Module</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">JuniorDataEngineerAssignment</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Extract Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/extract.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-extract">
+<span id="extract-module"></span><h1>Extract Module<a class="headerlink" href="#module-extract" title="Link to this heading"></a></h1>
+<p>Module to extract merged PRs from a GitHub repository using the GitHub API.</p>
+<p>This module fetches merged pull requests from a specified GitHub repository,
+including details about code reviews and check statuses, and saves the raw data
+as JSON files.</p>
+<p>Functions:
+- getMergedPRs(repo, perPage=100, since=None, until=None): Fetch merged PRs from the specified repository.
+- getReviews(repo, pr_number, headers): Fetch reviews for a specific PR.
+- getCheckStatus(repo, sha, headers): Fetch check run statuses for a specific commit SHA.
+- main(): Main function to execute the extraction process.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="extract.getCheckStatus">
+<span class="sig-prename descclassname"><span class="pre">extract.</span></span><span class="sig-name descname"><span class="pre">getCheckStatus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sha</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extract.html#getCheckStatus"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#extract.getCheckStatus" title="Link to this definition"></a></dt>
+<dd><p>Fetches the check run statuses for a specific commit SHA.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>str</em>) – GitHub repository in the format ‘owner/repo’.</p></li>
+<li><p><strong>sha</strong> (<em>str</em>) – Commit SHA.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – Headers for the GitHub API request, including authorization.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if all check runs have concluded successfully, False otherwise.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract.getMergedPRs">
+<span class="sig-prename descclassname"><span class="pre">extract.</span></span><span class="sig-name descname"><span class="pre">getMergedPRs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perPage</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">since</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">until</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extract.html#getMergedPRs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#extract.getMergedPRs" title="Link to this definition"></a></dt>
+<dd><p>Fetches merged pull requests from the specified GitHub repository.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>str</em>) – GitHub repository in the format ‘owner/repo’.</p></li>
+<li><p><strong>perPage</strong> (<em>int</em>) – Number of PRs to fetch per page (max 100).</p></li>
+<li><p><strong>since</strong> (<em>str</em>) – Fetch PRs merged since this date (YYYY-MM-DD).</p></li>
+<li><p><strong>until</strong> (<em>str</em>) – Fetch PRs merged until this date (YYYY-MM-DD).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>List of dictionaries containing merged PR data:</dt><dd><ul class="simple">
+<li><p>PRNum (int): Pull request number.</p></li>
+<li><p>Title (str): Pull request title.</p></li>
+<li><p>Author (str): Pull request author.</p></li>
+<li><p>CreatedAt (str): Creation timestamp of the PR.</p></li>
+<li><p>MergedAt (str): Merge timestamp of the PR.</p></li>
+<li><p>Num_Reviewers (int): Number of unique reviewers.</p></li>
+<li><p>CR_Passed (bool): Code review passed status.</p></li>
+<li><p>Checks_Passed (bool): Automated checks passed status.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="extract.getReviews">
+<span class="sig-prename descclassname"><span class="pre">extract.</span></span><span class="sig-name descname"><span class="pre">getReviews</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repo</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pr_number</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">headers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/extract.html#getReviews"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#extract.getReviews" title="Link to this definition"></a></dt>
+<dd><p>Fetches reviews for a specific pull request and determines if it has been approved.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>repo</strong> (<em>str</em>) – GitHub repository in the format ‘owner/repo’.</p></li>
+<li><p><strong>pr_number</strong> (<em>int</em>) – Pull request number.</p></li>
+<li><p><strong>headers</strong> (<em>dict</em>) – Headers for the GitHub API request, including authorization.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the PR has at least one approval.
+numReviewers (int): Number of unique reviewers for the PR.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>approved (bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="JuniorDataEngineerAssignment documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="transform.html" class="btn btn-neutral float-right" title="Transformation Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Patterson Rainbird-Webb.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
