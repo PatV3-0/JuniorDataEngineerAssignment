@@ -1,5 +1,0 @@
-PRNum,Title,Author,CreatedAt,MergedAt,Num_Reviewers,CR_Passed,Checks_Passed,AllQualityGatesPassed,TimeToMerge
-4,Updating stale branch,PatV3-0,2025-11-12 10:08:02+00:00,2025-11-12 10:08:32+00:00,0,False,True,False,0 days 00:00:30
-3,Code quality checks,PatV3-0,2025-11-12 10:01:02+00:00,2025-11-12 10:01:57+00:00,1,True,True,True,0 days 00:00:55
-2,Transformation step,PatV3-0,2025-11-12 09:33:12+00:00,2025-11-12 09:33:50+00:00,1,True,False,False,0 days 00:00:38
-1,Extraction step,PatV3-0,2025-11-12 09:31:20+00:00,2025-11-12 09:32:22+00:00,1,True,False,False,0 days 00:01:02

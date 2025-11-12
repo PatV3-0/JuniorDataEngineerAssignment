@@ -1,0 +1,5 @@
+PRNum,Title,Author,CreatedAt,MergedAt,Num_Reviewers,CR_Passed,Checks_Passed,AllQualityGatesPassed,TimeToMerge
+4,avi pull request,aviyashar,2023-11-21 12:29:01,2023-11-21 12:29:07,0,False,False,False,0 days 00:00:06
+3,Feature/eva,aviyashar,2023-11-21 12:26:30,2023-11-21 12:27:11,0,False,False,False,0 days 00:00:41
+2,Update README.md,aviyashar,2023-11-21 12:25:09,2023-11-21 12:25:14,0,False,False,False,0 days 00:00:05
+1,Chore/ops 197/last fixes before publishing,aviyashar,2023-11-21 12:22:52,2023-11-21 12:23:48,0,False,False,False,0 days 00:00:56
