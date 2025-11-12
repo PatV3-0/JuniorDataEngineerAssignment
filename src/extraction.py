@@ -97,7 +97,7 @@ def getMergedPRs(repo: str, perPage: int = 100, since: str = None, until: str = 
                     prInfo["Num_Reviewers"] = num_reviewers
                     prInfo["CR_Passed"] = approved
                     prInfo["Checks_Passed"] = getCheckStatus(
-                        repo, pr["merge_commit_sha"], headers
+                        repo, pr["head"]["sha"], headers
                     )
 
                     PRs.append(prInfo)
