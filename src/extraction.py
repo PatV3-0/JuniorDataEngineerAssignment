@@ -1,13 +1,19 @@
 from datetime import datetime
 from dotenv import load_dotenv
 from yaspin import yaspin
-import os, requests, json, logging, argparse, itertools, threading, time
+import argparse
+import json
+import logging
+import os
+import requests
 
 load_dotenv()
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
+)
+
 
 def getReviews(repo, pr_number, headers):
-    #Fetching reviews for PR
     url = f"https://api.github.com/repos/{repo}/pulls/{pr_number}/reviews"
     r = requests.get(url, headers=headers)
     r.raise_for_status()
@@ -25,8 +31,8 @@ def getReviews(repo, pr_number, headers):
 
     return approved, numReviewers
 
+
 def getCheckStatus(repo, sha, headers):
-    #Fetching check runs for commit {sha}
     url = f"https://api.github.com/repos/{repo}/commits/{sha}/check-runs"
     r = requests.get(url, headers=headers)
     r.raise_for_status()
@@ -40,18 +46,15 @@ def getCheckStatus(repo, sha, headers):
     logging.debug(f"Commit {sha} check runs: {json.dumps(checkRuns, indent=2)}")
     return all(run.get("conclusion") == "success" for run in checkRuns)
 
+
 def getMergedPRs(repo: str, perPage: int = 100, since: str = None, until: str = None):
-    #Fetching merged PRs
     token = os.getenv("GITHUB_TOKEN")
     if not token:
-        raise ValueError("GITHUB_TOKEN not found in environment variables") 
+        raise ValueError("GITHUB_TOKEN not found in environment variables")
 
     headers = {"Authorization": f"token {token}"}
     baseUrl = f"https://api.github.com/repos/{repo}/pulls"
-    params = {
-        "state": "closed",
-        "perPage": perPage
-    }
+    params = {"state": "closed", "perPage": perPage}
     PRs = []
     page = 1
 
@@ -93,7 +96,9 @@ def getMergedPRs(repo: str, perPage: int = 100, since: str = None, until: str = 
                     approved, num_reviewers = getReviews(repo, pr["number"], headers)
                     prInfo["Num_Reviewers"] = num_reviewers
                     prInfo["CR_Passed"] = approved
-                    prInfo["Checks_Passed"] = getCheckStatus(repo, pr["merge_commit_sha"], headers)
+                    prInfo["Checks_Passed"] = getCheckStatus(
+                        repo, pr["merge_commit_sha"], headers
+                    )
 
                     PRs.append(prInfo)
 
@@ -105,7 +110,9 @@ def getMergedPRs(repo: str, perPage: int = 100, since: str = None, until: str = 
             spinner.fail("✖")
             logging.error(f"Error fetching PRs: {e}")
 
-    outPath = os.path.join(rawDataDir, f"PRs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+    outPath = os.path.join(
+        rawDataDir, f"PRs_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    )
     with open(outPath, "w") as f:
         json.dump(PRs, f, indent=4)
 
@@ -113,13 +120,30 @@ def getMergedPRs(repo: str, perPage: int = 100, since: str = None, until: str = 
     logging.info(f"Raw PR data saved to {outPath}")
     return PRs
 
+
 if __name__ == "__main__":
     print("Starting PR extraction script...")
-    parser = argparse.ArgumentParser(description="Fetch merged PRs from a GitHub repository.")
-    parser.add_argument("--repo", type=str, required=True, help="GitHub repository in the format 'owner/repo'")
-    parser.add_argument("--since", type=str, help="Fetch PRs merged since this date (YYYY-MM-DD)")
-    parser.add_argument("--until", type=str, help="Fetch PRs merged until this date (YYYY-MM-DD)")
-    parser.add_argument("--per_page", type=int, default=100, help="Number of PRs to fetch per page (default: 100)")
+    parser = argparse.ArgumentParser(
+        description="Fetch merged PRs from a GitHub repository."
+    )
+    parser.add_argument(
+        "--repo",
+        type=str,
+        required=True,
+        help="GitHub repository in the format 'owner/repo'",
+    )
+    parser.add_argument(
+        "--since", type=str, help="Fetch PRs merged since this date (YYYY-MM-DD)"
+    )
+    parser.add_argument(
+        "--until", type=str, help="Fetch PRs merged until this date (YYYY-MM-DD)"
+    )
+    parser.add_argument(
+        "--per_page",
+        type=int,
+        default=100,
+        help="Number of PRs to fetch per page (default: 100)",
+    )
 
     args = parser.parse_args()
 
