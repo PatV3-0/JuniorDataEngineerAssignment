@@ -2,8 +2,6 @@
 
 This repository contains Python scripts to extract merged pull request (PR) data.
 
----
-
 ## Directory Structure
 ```
 project-root/
@@ -95,7 +93,6 @@ py src/transform.py
 # Linux/macOS
 python3 src/transform.py
 ```
-
 ---
 
 ## Data Output:
@@ -112,7 +109,6 @@ python3 src/transform.py
   - Checks_Passed (CI checks passed)
   - AllQualityGatesPassed (both CR and Checks passed)
   - TimeToMerge (time from creation to merge in hours/minutes/seconds)
-
 --- 
 
 ## Documentation:
@@ -125,8 +121,8 @@ Access the documentation in your browser at:
 ```bash
 build/html/index.html
 ```
-
 --- 
+
 ## Notes:
 - All datetime values are UTC.
 - The TimeToMerge field is computed as the diference between MergedAt and CreatedAt.
