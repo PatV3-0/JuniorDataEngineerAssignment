@@ -1,3 +1,16 @@
+"""
+Module for transforming raw pull request data into a structured format.
+
+This module reads raw JSON files containing pull request data, processes
+them to compute additional fields, and saves the transformed data as CSV files.
+
+Functions:
+- transformPRData(df): Transforms a DataFrame of pull request data.
+- processRawFiles(rawDataDir, transformedDataDir): Processes all raw JSON files
+in the specified directory and saves transformed CSV files.
+- main(): Main function to execute the transformation process.
+"""
+
 import json
 import logging
 import os
@@ -9,6 +22,27 @@ logging.basicConfig(
 
 
 def transformPRData(df):
+    """
+    Transforms the pull request DataFrame by converting date fields,
+    computing quality gate status, and calculating time to merge.
+
+    Parameters:
+        df (pd.DataFrame): DataFrame containing raw pull request data:
+            - CreatedAt (str): Creation timestamp of the PR.
+            - MergedAt (str): Merge timestamp of the PR.
+            - CR_Passed (bool): Code review passed status.
+            - Checks_Passed (bool): Automated checks passed status.
+    Returns:
+        pd.DataFrame: Transformed DataFrame with additional computed fields:
+            - CreatedAt (datetime): Parsed creation timestamp.
+            - MergedAt (datetime): Parsed merge timestamp.
+            - CR_Passed (bool): Code review passed status.
+            - Checks_Passed (bool): Automated checks passed status.
+            - AllQualityGatesPassed (bool): True if both CR_Passed and Checks_Passed
+              are True.
+            - TimeToMerge (timedelta): Time difference between MergedAt and CreatedAt.
+    """
+
     if df.empty:
         logging.warning("Input DataFrame is empty. No data to transform.")
         return df
@@ -28,6 +62,16 @@ def transformPRData(df):
 
 
 def processRawFiles(rawDataDir, transformedDataDir):
+    """
+    Processes all raw JSON files in the specified directory, transforms
+    the pull request data, and saves the results as CSV files.
+
+    Parameters:
+        rawDataDir (str): Directory containing raw JSON files.
+        transformedDataDir (str): Directory to save transformed CSV files.
+    Returns:
+        None
+    """
     os.makedirs(transformedDataDir, exist_ok=True)
 
     for filename in os.listdir(rawDataDir):
@@ -57,6 +101,13 @@ def processRawFiles(rawDataDir, transformedDataDir):
 
 
 def main():
+    """
+    Main function to execute the transformation process.
+
+    Sets up directory paths and initiates processing of raw files.
+    Returns:
+        None
+    """
     scriptDir = os.path.dirname(os.path.abspath(__file__))
     projectRoot = os.path.abspath(os.path.join(scriptDir, ".."))
     rawDataDir = os.path.join(projectRoot, "data", "raw")
