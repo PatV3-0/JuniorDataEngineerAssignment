@@ -1,5 +1,5 @@
-PRNum,Title,Author,CreatedAt,MergedAt,Num_Reviewers,CR_Passed,Checks_Passed,TimeToMerge,AllQualityGatesPassed
-4,avi pull request,aviyashar,2023-11-21 12:29:01+00:00,2023-11-21 12:29:07+00:00,0,False,False,0 days 00:00:06,False
-3,Feature/eva,aviyashar,2023-11-21 12:26:30+00:00,2023-11-21 12:27:11+00:00,0,False,False,0 days 00:00:41,False
-2,Update README.md,aviyashar,2023-11-21 12:25:09+00:00,2023-11-21 12:25:14+00:00,0,False,False,0 days 00:00:05,False
-1,Chore/ops 197/last fixes before publishing,aviyashar,2023-11-21 12:22:52+00:00,2023-11-21 12:23:48+00:00,0,False,False,0 days 00:00:56,False
+PRNum,Title,Author,CreatedAt,MergedAt,Num_Reviewers,CR_Passed,Checks_Passed,AllQualityGatesPassed,TimeToMerge
+4,avi pull request,aviyashar,2023-11-21 12:29:01+00:00,2023-11-21 12:29:07+00:00,0,False,False,False,0 days 00:00:06
+3,Feature/eva,aviyashar,2023-11-21 12:26:30+00:00,2023-11-21 12:27:11+00:00,0,False,False,False,0 days 00:00:41
+2,Update README.md,aviyashar,2023-11-21 12:25:09+00:00,2023-11-21 12:25:14+00:00,0,False,False,False,0 days 00:00:05
+1,Chore/ops 197/last fixes before publishing,aviyashar,2023-11-21 12:22:52+00:00,2023-11-21 12:23:48+00:00,0,False,False,False,0 days 00:00:56
