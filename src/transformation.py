@@ -13,8 +13,12 @@ def transformPRData(df):
         logging.warning("Input DataFrame is empty. No data to transform.")
         return df
 
-    df["CreatedAt"] = pd.to_datetime(df["CreatedAt"], errors="coerce")
-    df["MergedAt"] = pd.to_datetime(df["MergedAt"], errors="coerce")
+    df["CreatedAt"] = pd.to_datetime(df["CreatedAt"], errors="coerce").dt.tz_localize(
+        None
+    )
+    df["MergedAt"] = pd.to_datetime(df["MergedAt"], errors="coerce").dt.tz_localize(
+        None
+    )
     df["CR_Passed"] = df["CR_Passed"].astype(bool)
     df["Checks_Passed"] = df["Checks_Passed"].astype(bool)
     df["AllQualityGatesPassed"] = df["CR_Passed"] & df["Checks_Passed"]
