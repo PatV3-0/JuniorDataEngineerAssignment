@@ -1,13 +1,13 @@
 import logging
 import os
 import sys
-from extract import getMergedPRs
-from transform import processRawFiles
 
 scriptDir = os.path.dirname(os.path.abspath(__file__))
 srcDir = os.path.abspath(os.path.join(scriptDir, "src"))
-if srcDir not in sys.path:
-    sys.path.insert(0, srcDir)
+sys.path.insert(0, srcDir)
+
+from extract import getMergedPRs
+from transform import processRawFiles
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"

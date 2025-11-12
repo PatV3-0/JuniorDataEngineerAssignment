@@ -29,4 +29,4 @@ jobs:
         run: black --check .
 
       - name: Run Flake8
-        run: flake8 . --max-line-length=88 --ignore=D100,D103,D202,D400,D401,E203,W503
+        run: flake8 . --max-line-length=88 --ignore=D100,D103,D202,D205,D400,D401,E203,E402,W503
