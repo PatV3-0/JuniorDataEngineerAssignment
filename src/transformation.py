@@ -8,11 +8,6 @@ def transformPRData(df):
     if df.empty:
         logging.warning("Input DataFrame is empty. No data to transform.")
         return df
-<<<<<<< Updated upstream
-    
-    df["CreatedAt"] = pd.to_datetime(df["CreatedAt"], errors="coerce")
-    df["MergedAt"] = pd.to_datetime(df["MergedAt"], errors="coerce")
-=======
 
     df["CreatedAt"] = pd.to_datetime(df["CreatedAt"], errors="coerce").dt.tz_localize(
         None
@@ -20,7 +15,6 @@ def transformPRData(df):
     df["MergedAt"] = pd.to_datetime(df["MergedAt"], errors="coerce").dt.tz_localize(
         None
     )
->>>>>>> Stashed changes
     df["CR_Passed"] = df["CR_Passed"].astype(bool)
     df["Checks_Passed"] = df["Checks_Passed"].astype(bool)
     df["AllQualityGatesPassed"] = df["CR_Passed"] & df["Checks_Passed"]
